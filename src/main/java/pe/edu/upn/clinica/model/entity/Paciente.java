@@ -19,7 +19,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-@Table(name = "pacientes")
+@Table(name = "paciente")
 public class Paciente {
 
 	@Id
@@ -46,13 +46,13 @@ public class Paciente {
 	 @JoinColumn(name = "cita_id")
 	private Cita cita;
 	 
-	 @OneToMany(mappedBy = "pacientee", fetch = FetchType.LAZY)
+	 @OneToMany(mappedBy = "paciente", fetch = FetchType.LAZY)
 		private List<Doctor> doctores;
 	 
-	 @OneToMany(mappedBy = "pacienteee", fetch = FetchType.LAZY)
-		private ResultadoLaboratorio Resultados ;
+	 @OneToMany(mappedBy = "paciente", fetch = FetchType.LAZY)
+		private List<ResultadoLaboratorio> resultados ;
 	 
-	 @OneToOne(mappedBy = "pacienteeee")
+	 @OneToOne(mappedBy = "paciente")
 		private Farmacia farmacia;
 	    
 	    public Paciente() {

@@ -2,10 +2,13 @@ package pe.edu.upn.clinica.model.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
 import javax.persistence.Table;
 
 @Entity
@@ -19,8 +22,9 @@ public class TipoAtencion {
 	@Column(name= "descripcion")
 	private String descripcion;
 	
-	@OneToOne(mappedBy = "tipo")
-	private ProgramacionCita programacioncita;
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "programacion")
+	private ProgramacionCita programacionCita;
 
 	public String getId() {
 		return id;
@@ -38,13 +42,15 @@ public class TipoAtencion {
 		this.descripcion = descripcion;
 	}
 
-	public ProgramacionCita getProgramacioncita() {
-		return programacioncita;
+	public ProgramacionCita getProgramacionCita() {
+		return programacionCita;
 	}
 
-	public void setProgramacioncita(ProgramacionCita programacioncita) {
-		this.programacioncita = programacioncita;
+	public void setProgramacionCita(ProgramacionCita programacionCita) {
+		this.programacionCita = programacionCita;
 	}
+
+
 
 
 	

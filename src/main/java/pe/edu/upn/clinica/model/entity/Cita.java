@@ -15,14 +15,13 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "citas")
+@Table(name = "cita")
 public class Cita {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private String id;
     
-    @OneToMany(mappedBy = "citaas", fetch = FetchType.LAZY)
-    @JoinColumn(name= "id_paciente")
+    @OneToMany(mappedBy = "cita", fetch = FetchType.LAZY)
 	private List<Paciente> pacientes;
     
 	public Cita() {
@@ -33,9 +32,8 @@ public class Cita {
 		pacientes.add(paciente);
 	}
     
-    @OneToOne(mappedBy = "cit")
-    @JoinColumn(name= "Id_programacionCita")
-	private ProgramacionCita programacioncita;
+    @OneToMany(mappedBy = "cita")
+	private List<ProgramacionCita> programacioncita;
 
 	public String getId() {
 		return id;
@@ -49,12 +47,16 @@ public class Cita {
 	public void setPacientes(List<Paciente> pacientes) {
 		this.pacientes = pacientes;
 	}
-	public ProgramacionCita getProgramacioncita() {
+	public List<ProgramacionCita> getProgramacioncita() {
 		return programacioncita;
 	}
-	public void setProgramacioncita(ProgramacionCita programacioncita) {
+	public void setProgramacioncita(List<ProgramacionCita> programacioncita) {
 		this.programacioncita = programacioncita;
 	}
+
+
+
+
 
 
     

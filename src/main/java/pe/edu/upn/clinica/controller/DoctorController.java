@@ -18,6 +18,7 @@ import org.springframework.web.bind.support.SessionStatus;
 
 import pe.edu.upn.clinica.model.entity.Doctor;
 import pe.edu.upn.clinica.model.entity.Especialidad;
+import pe.edu.upn.clinica.model.entity.Paciente;
 import pe.edu.upn.clinica.service.DoctorService;
 import pe.edu.upn.clinica.service.EspecialidadService;
 import pe.edu.upn.clinica.service.PacienteService;
@@ -69,7 +70,7 @@ public class DoctorController {
 		return "/medico/edit";
 	}
 	@PostMapping("/save")
-	public String save(@ModelAttribute("medico") Doctor doctor, 
+	public String save(@ModelAttribute("doctor") Doctor doctor, 
 			Model model, SessionStatus status) {
 		try {
 			doctorService.save(doctor);
@@ -85,9 +86,9 @@ public class DoctorController {
 		Doctor doctor = new Doctor();
 		model.addAttribute("doctor", doctor);
 		try {
-			List<Especialidad> especialidades = 
-					especialidadService.findAll();
-			model.addAttribute("especialidades", especialidades);
+			List<Paciente> paciente = 
+					pacienteService.findAll();
+			model.addAttribute("paciente", paciente);
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
